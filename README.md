@@ -46,6 +46,7 @@ Create a project with the following structure:
   |-- next.config.js
   |-- tsconfig.json
   |-- .eslintrc.json
+
  
 ## Submission:
 Fork this repository, complete the tasks, and submit a pull request with your solution. Ensure that your code is well-documented and follows best practices. Your project needs to deploy on Vercel, Ensure that your code is running there.
