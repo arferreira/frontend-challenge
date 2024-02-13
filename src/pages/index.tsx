@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 
 import { api } from "~/utils/api";
+import { Alert } from "flowbite-react";
 
 export default function Home() {
   const hello = api.post.hello.useQuery({ text: "from tRPC" });
@@ -33,16 +34,14 @@ export default function Home() {
             </Link>
             <Link
               className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-              href="https://create.t3.gg/en/introduction"
-              target="_blank"
+              href="/dashboard"
             >
               <h3 className="text-2xl font-bold">Documentation →</h3>
-              <div className="text-lg">
-                Learn more about Create T3 App, the libraries it uses, and how
-                to deploy it.
-              </div>
+              <div className="text-lg">Dashboard</div>
             </Link>
           </div>
+          <Alert color="info">Alert!</Alert>
+
           <div className="flex flex-col items-center gap-2">
             <p className="text-2xl text-white">
               {hello.data ? hello.data.greeting : "Loading tRPC query..."}
@@ -57,7 +56,6 @@ export default function Home() {
 
 function AuthShowcase() {
   const { data: sessionData } = useSession();
-  console.log("🚀 - sessionData:", sessionData);
 
   const { data: secretMessage } = api.post.getSecretMessage.useQuery(
     undefined, // no input
