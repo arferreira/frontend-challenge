@@ -22,7 +22,11 @@ export default function Avatar({ src, name, email }: Props) {
         avatarRef.current &&
         !avatarRef.current.contains(event.target as Node)
       ) {
-        setDropdownVisible(false);
+        dropdownRef.current.classList.add("animate-go-to-right");
+
+        setTimeout(() => {
+          setDropdownVisible(false);
+        }, 1000);
       }
     };
 

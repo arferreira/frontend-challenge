@@ -36,6 +36,7 @@ export default {
           DEFAULT: "#5865F2",
           dark: "#434EE4",
         },
+        green: "#23A559",
         black: {
           DEFAULT: "#000000",
           soft: "#111214",
@@ -55,10 +56,14 @@ export default {
           "0%": { right: "-100%" },
           "100%": { right: "2%" },
         },
+        "go-to-right": {
+          "0%": { right: "2%" },
+          "100%": { right: "-100%" },
+        },
       },
       animation: {
         "come-from-right": "come-from-right 0.5s ease-in-out forwards",
-        "go-to-right": "come-from-right reverse 0.5s ease-in-out",
+        "go-to-right": "go-to-right 0.5s ease-in-out forwards",
       },
     },
   },

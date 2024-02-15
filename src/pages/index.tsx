@@ -5,6 +5,8 @@ import { type ReactElement, useEffect } from "react";
 import Button from "~/components/Button";
 import MainLayout from "~/layouts/MainLayout";
 import { useToast } from "~/providers/ToastProvider";
+import { AiFillHome } from "react-icons/ai";
+import { MdSpaceDashboard } from "react-icons/md";
 
 export default function Home() {
   const { query } = useRouter();
@@ -37,11 +39,17 @@ export default function Home() {
           </h3>
         </div>
         <div className="flex w-full items-center justify-center gap-4 px-4 pb-2">
-          <Link href="/home">
-            <Button>Home</Button>
+          <Link href="/home" className="flex flex-col items-center gap-1">
+            <div className="border-green text-green hover:bg-green focus:bg-green rounded-[30px] border-2 bg-green-300 p-3 transition-all ease-in-out hover:rounded-[12px] hover:text-white focus:rounded-lg focus:text-white">
+              <AiFillHome />
+            </div>
+            <p className="text-green text-xs">Home</p>
           </Link>
-          <Link href="/dashboard">
-            <Button>Dashboard</Button>
+          <Link href="/dashboard" className="flex flex-col items-center gap-1">
+            <div className="border-green text-green hover:bg-green focus:bg-green rounded-[30px] border-2 bg-green-300 p-3 transition-all ease-in-out hover:rounded-[12px] hover:text-white focus:rounded-lg focus:text-white">
+              <MdSpaceDashboard />
+            </div>
+            <p className="text-green text-xs">Dashboard</p>
           </Link>
         </div>
 
