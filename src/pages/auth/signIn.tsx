@@ -57,20 +57,20 @@ export default function SignIn() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {query?.error ? <Toast type="danger" message={query.error} /> : null}
-      <h1 className="text-2xl font-bold">Sign In</h1>
-      <Discord />
-      <div className="flex w-full items-center justify-center gap-2 text-sm text-gray-400">
-        <div className="h-px w-full rounded-md bg-gray-300" />
-        or
-        <div className="h-px w-full rounded-md bg-gray-300" />
-      </div>
-
+    <div className="flex flex-col items-start gap-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex w-full flex-col gap-4"
+        className="flex w-full flex-col gap-4 p-4 pb-2"
       >
+        <h2 className="dark:text-white-soft text-2xl font-bold tracking-tight text-black md:text-2xl">
+          Sign <span className="text-blue-600 dark:text-discord">In</span>
+        </h2>
+        <Discord />
+        <div className="dark:text-white-softest flex w-full items-center justify-center gap-2 text-sm text-gray-400">
+          <div className="dark:bg-white-softest h-px w-full rounded-md bg-gray-400" />
+          or
+          <div className="dark:bg-white-softest h-px w-full rounded-md bg-gray-400" />
+        </div>
         <Input
           required
           label="email"
@@ -85,18 +85,20 @@ export default function SignIn() {
           type="password"
           error={errors.password?.message}
         />
+      </form>
 
+      <div className="dark:bg-black-softest bg-white-soft flex w-full flex-col gap-4 rounded-b-lg p-4">
         <div className="flex gap-1 text-sm">
-          <p>Don&apos;t have an account? </p>
+          <p className="dark:text-white-softer">Don&apos;t have an account? </p>
           <Link href="/auth/signUp">
-            <p className="text-blue-500">Sign Up</p>
+            <p className="text-blue-500 underline">Sign Up</p>
           </Link>
         </div>
 
         <Button type="submit" onClick={handleSubmit(onSubmit)}>
           Sign In
         </Button>
-      </form>
+      </div>
     </div>
   );
 }

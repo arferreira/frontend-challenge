@@ -48,13 +48,14 @@ export default function SignUp() {
   if (isLoading) return <div>Loading...</div>;
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <h1 className="text-2xl font-bold">SignUp</h1>
-
+    <div className="flex flex-col items-start gap-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex w-full flex-col gap-4"
+        className="flex w-full flex-col gap-4 p-4 pb-2"
       >
+        <h2 className="dark:text-white-soft text-2xl font-bold tracking-tight text-black md:text-2xl">
+          Sign <span className="text-blue-600 dark:text-discord">Up</span>
+        </h2>
         <Input
           required
           label="name"
@@ -75,10 +76,12 @@ export default function SignUp() {
           type="password"
           error={errors.password?.message}
         />
+      </form>
+      <div className="dark:bg-black-softest bg-white-soft flex w-full flex-col gap-4 rounded-b-lg p-4">
         <Button type="submit" onClick={handleSubmit(onSubmit)}>
           Sign Up
         </Button>
-      </form>
+      </div>
     </div>
   );
 }

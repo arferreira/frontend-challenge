@@ -32,14 +32,21 @@ export default {
       },
       colors: {
         background: "#F9F9FB",
-        discord: "#434EE4",
+        discord: {
+          DEFAULT: "#5865F2",
+          dark: "#434EE4",
+        },
         black: {
           DEFAULT: "#000000",
-          soft: "#313338",
+          soft: "#111214",
+          softer: "#1E1F22",
+          softest: "#2B2D31",
         },
         white: {
-          DEFAULT: "#FFFFFF",
-          smoke: "#FBFBFC",
+          DEFAULT: "#FFF",
+          soft: "#F0F0F0",
+          softer: "#DBDEE1",
+          softest: "#B5BAC1",
         },
       },
       prefix: "fb-",

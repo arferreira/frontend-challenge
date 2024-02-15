@@ -43,6 +43,7 @@ export const authOptions: NextAuthOptions = {
           where: { id: session.user.id },
           select: { role: true },
         });
+        session.user.role = foundUser?.role ?? "USER";
         token.role = foundUser?.role ?? "USER";
       }
       return session;

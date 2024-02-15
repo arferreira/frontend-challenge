@@ -3,14 +3,12 @@ import { type UseFormRegisterReturn } from "react-hook-form";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  className?: string;
   error?: string;
   register?: UseFormRegisterReturn;
   required?: boolean;
 }
 
 export default function Input({
-  className,
   error,
   label,
   register,
@@ -21,7 +19,7 @@ export default function Input({
   return (
     <div className="relative flex w-full flex-col gap-1">
       {label && (
-        <label className="text-gray-07 self-start text-start text-xs uppercase">
+        <label className="text-gray-07 dark:text-white-softest self-start text-start text-xs uppercase">
           {label}
           {required && !disabled && <span className="text-red-500">*</span>}
         </label>

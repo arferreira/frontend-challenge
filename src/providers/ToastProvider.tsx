@@ -11,8 +11,11 @@ interface ToastProviderProps {
 }
 
 interface ToastContextType {
-  showToast: (toast: ToastProps) => void;
-  // hideToast: (toastId: string) => void;
+  showToast: (toast: {
+    type: "danger" | "success" | "warning";
+    message: string;
+  }) => void;
+  hideToast: (toastId: string) => void;
 }
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
@@ -20,23 +23,38 @@ const ToastContext = createContext<ToastContextType | undefined>(undefined);
 const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
   const [toasts, setToasts] = useState<ToastProps[]>([]);
 
-  const showToast = ({ message, type }: ToastProps) => {
+  const showToast = ({
+    message,
+    type,
+  }: {
+    type: "danger" | "success" | "warning";
+    message: string;
+  }) => {
     const toastId = Date.now().toString(); // Generate a unique ID
     const newToast = { id: toastId, message, type };
     setToasts((prevToasts) => [...prevToasts, newToast]);
   };
 
-  // const hideToast = (toastId: string) => {
-  //   setToasts((prevToasts) =>
-  //     prevToasts.filter((toast) => toast.id !== toastId),
-  // );
-  // };
+  const hideToast = (toastId: string) => {
+    const toast = document.getElementById(toastId);
+    if (toast) toast.classList.add("translate-x-[110%]");
+    setTimeout(() => {
+      setToasts((prevToasts) =>
+        prevToasts.filter((toast) => toast.id !== toastId),
+      );
+    }, 500);
+  };
 
   return (
-    <ToastContext.Provider value={{ showToast }}>
+    <ToastContext.Provider value={{ showToast, hideToast }}>
       {children}
       {toasts.map((toast) => (
-        <Toast key={toast.id} message={toast.message} type={toast.type} />
+        <Toast
+          key={toast.id}
+          id={toast.id}
+          message={toast.message}
+          type={toast.type}
+        />
       ))}
     </ToastContext.Provider>
   );
