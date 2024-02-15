@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders verifyEmail unchanged 1`] = `
+<div>
+  <div
+    class="flex flex-col items-center gap-4"
+  >
+    <div
+      class="flex w-full flex-col gap-4 p-4 pb-0"
+    >
+      <h2
+        class="text-2xl font-bold tracking-tight text-black dark:text-white-soft md:text-2xl"
+      >
+        Verify 
+        <span
+          class="text-blue-600 dark:text-discord"
+        >
+          Email
+        </span>
+      </h2>
+      <form
+        class="flex w-full flex-col gap-4"
+      >
+        <div
+          class="relative flex w-full flex-col gap-1"
+        >
+          <label
+            class="text-gray-07 dark:text-white-softest self-start text-start text-xs uppercase"
+          >
+            Token
+            <span
+              class="text-red-500"
+            >
+              *
+            </span>
+          </label>
+          <input
+            class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            name="token"
+            value=""
+          />
+        </div>
+      </form>
+    </div>
+    <div
+      class="flex w-full flex-col gap-4 rounded-b-lg bg-white-soft p-4 dark:bg-black-softest"
+    >
+      <button
+        class="dark:hover:bg-discord-dark w-full rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white transition-all hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-discord dark:focus:ring-blue-800 sm:w-auto"
+        type="submit"
+      >
+        Verify
+      </button>
+    </div>
+  </div>
+</div>
+`;
