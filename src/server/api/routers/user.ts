@@ -44,9 +44,9 @@ export const userRouter = createTRPCRouter({
           user_id: process.env.EMAIL_PUBLIC_KEY,
           template_params: {
             to_name: input.name,
-            email_from: input.email,
+            email_to: input.email,
             message: token,
-            link: `${process.env.VERCEL_URL}/auth/verifyEmail?email=${input.email}&token=${token}`,
+            link: `${process.env.VERCEL_URL ?? "http://localhost:3000"}/auth/verifyEmail?email=${input.email}&token=${token}`,
           },
         });
         if (response.status === 200) return user;
