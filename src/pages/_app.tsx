@@ -5,14 +5,25 @@ import { type AppType } from "next/app";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+import { type ReactElement, type ReactNode } from "react";
+import { type NextPage } from "next";
+
+export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
+}: {
+  Component: NextPageWithLayout;
+  pageProps: { session: Session | null };
 }) => {
+  const getLayout = Component.getLayout ?? ((page: ReactNode) => page);
+
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      {getLayout(<Component {...pageProps} />)}
     </SessionProvider>
   );
 };
