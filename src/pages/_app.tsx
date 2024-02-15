@@ -7,6 +7,7 @@ import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import { type ReactElement, type ReactNode } from "react";
 import { type NextPage } from "next";
+import { ToastProvider } from "~/providers/ToastProvider";
 
 export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -23,7 +24,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
 
   return (
     <SessionProvider session={session}>
-      {getLayout(<Component {...pageProps} />)}
+      <ToastProvider>{getLayout(<Component {...pageProps} />)}</ToastProvider>
     </SessionProvider>
   );
 };

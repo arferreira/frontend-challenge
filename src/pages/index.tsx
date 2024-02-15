@@ -2,7 +2,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Toast from "~/components/Toast";
+import { useEffect } from "react";
+import { useToast } from "~/providers/ToastProvider";
 
 import { api } from "~/utils/api";
 
@@ -10,6 +11,18 @@ export default function Home() {
   const hello = api.post.hello.useQuery({ text: "from tRPC" });
 
   const { query } = useRouter();
+
+  const { showToast } = useToast();
+
+  useEffect(() => {
+    if (query?.error) {
+      showToast({
+        type: "danger",
+        message: query.error as string,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
 
   return (
     <>
@@ -19,7 +32,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className=" flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        {query?.error ? <Toast type="danger" message={query.error} /> : null}
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
             Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
@@ -59,6 +71,7 @@ export default function Home() {
 
 function AuthShowcase() {
   const { data: sessionData } = useSession();
+  console.log("🚀 - sessionData:", sessionData);
 
   const { data: secretMessage } = api.post.getSecretMessage.useQuery(
     undefined, // no input

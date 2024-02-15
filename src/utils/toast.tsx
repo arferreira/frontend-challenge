@@ -1,12 +1,16 @@
 export function handleMessage(message: string | string[]) {
-  if (message === "unauthorized")
-    return "You are not authorized to perform this action.";
-
-  return message;
+  switch (message) {
+    case "unauthorized":
+      return "You are not authorized to perform this action.";
+    case "CredentialsSignin":
+      return "Invalid credentials";
+    default:
+      return message;
+  }
 }
 
-export function closeToast(type: string) {
-  const toast = document.getElementById(`toast-${type}`);
+export function closeToast(type: string, id?: string) {
+  const toast = document.getElementById(id ?? `toast-${type}`);
   if (toast) toast.classList.add("translate-x-[110%]");
   setTimeout(() => {
     toast?.remove();

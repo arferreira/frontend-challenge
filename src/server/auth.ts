@@ -10,6 +10,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 import { env } from "~/env";
 import { db } from "~/server/db";
+import bcrypt from "bcrypt";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -57,22 +58,29 @@ export const authOptions: NextAuthOptions = {
       credentials: {
         email: { label: "Email", type: "text", placeholder: "jsmith" },
         password: { label: "Password", type: "password" },
-        role: { label: "Role", type: "select", placeholder: "USER" }, // Im letting the user set their own role for the sake of this example
       },
-      async authorize(credentials, req) {
-        const user = await db.user.findUnique({
-          where: { email: credentials?.email, password: credentials?.password },
-        });
-        return null;
 
-        if (user) {
-          // Any object returned will be saved in `user` property of the JWT
-          return user;
-        } else {
-          // If you return null then an error will be displayed advising the user to check their details.
-          return null;
-          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password)
+          throw new Error("No credentials");
+
+        const user = await db.user.findUnique({
+          where: { email: credentials?.email },
+        });
+
+        if (user?.password) {
+          const isValid = bcrypt.compareSync(
+            credentials.password,
+            user.password,
+          );
+          if (isValid) {
+            console.log("Valid!");
+            return user;
+          }
+          throw new Error("Wrong credentials");
         }
+
+        throw new Error("User not found");
       },
     }),
   ],
