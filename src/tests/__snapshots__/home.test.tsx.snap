@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+<div>
+  <div
+    class="flex flex-col items-start gap-4"
+  >
+    <div
+      class="p-4 pb-0"
+    >
+      <h2
+        class="text-2xl font-bold tracking-tight text-black dark:text-white-soft md:text-2xl"
+      >
+        Home
+      </h2>
+      <p
+        class="text-black dark:text-white-soft"
+      >
+        You're a
+         
+        Admin, you can access dashboard.
+      </p>
+    </div>
+    <div
+      class="flex w-full flex-col gap-4 rounded-b-lg bg-white-soft p-4 dark:bg-black-softest"
+    >
+      <button
+        class="dark:hover:bg-discord-dark w-full rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white transition-all hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-discord dark:focus:ring-blue-800 sm:w-auto"
+      >
+        Turn yourself into an 
+        User
+      </button>
+    </div>
+  </div>
+</div>
+`;
