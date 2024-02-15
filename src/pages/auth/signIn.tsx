@@ -9,7 +9,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "~/components/Button";
 import Discord from "~/components/auth/Discord";
 import { useRouter } from "next/router";
-import Toast from "~/components/Toast";
 import Link from "next/link";
 import { useToast } from "~/providers/ToastProvider";
 
@@ -62,14 +61,14 @@ export default function SignIn() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex w-full flex-col gap-4 p-4 pb-2"
       >
-        <h2 className="dark:text-white-soft text-2xl font-bold tracking-tight text-black md:text-2xl">
+        <h2 className="text-2xl font-bold tracking-tight text-black dark:text-white-soft md:text-2xl">
           Sign <span className="text-blue-600 dark:text-discord">In</span>
         </h2>
         <Discord />
-        <div className="dark:text-white-softest flex w-full items-center justify-center gap-2 text-sm text-gray-400">
-          <div className="dark:bg-white-softest h-px w-full rounded-md bg-gray-400" />
+        <div className="flex w-full items-center justify-center gap-2 text-sm text-gray-400 dark:text-white-softest">
+          <div className="h-px w-full rounded-md bg-gray-400 dark:bg-white-softest" />
           or
-          <div className="dark:bg-white-softest h-px w-full rounded-md bg-gray-400" />
+          <div className="h-px w-full rounded-md bg-gray-400 dark:bg-white-softest" />
         </div>
         <Input
           required
@@ -87,7 +86,7 @@ export default function SignIn() {
         />
       </form>
 
-      <div className="dark:bg-black-softest bg-white-soft flex w-full flex-col gap-4 rounded-b-lg p-4">
+      <div className="flex w-full flex-col gap-4 rounded-b-lg bg-white-soft p-4 dark:bg-black-softest">
         <div className="flex gap-1 text-sm">
           <p className="dark:text-white-softer">Don&apos;t have an account? </p>
           <Link href="/auth/signUp">

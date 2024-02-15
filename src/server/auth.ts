@@ -75,7 +75,6 @@ export const authOptions: NextAuthOptions = {
             user.password,
           );
           if (isValid) {
-            console.log("Valid!");
             return user;
           }
           throw new Error("Wrong credentials");
