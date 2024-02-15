@@ -1,5 +1,5 @@
 ### Challenge Overview:
-This is my submission of the frontend challenge!
+This is my submission of the frontend challenge! [Deployed App](https://frontend-challenge-murex-omega.vercel.app/)
 
 ### Challenges:
 - I had very little experience with NextAuth, so I took some time to learn and apply.
@@ -20,3 +20,4 @@ This is my submission of the frontend challenge!
 - And the other tech was the one required by the test. Next, React, TypeScript, etc.
 
 ###### PS: I added a button at the home page to turn a user into an admin and vice versa, just for the sake of this challenge.
+###### PS 2: Since the email service that I used is free, there's a big chance that the confirmation email that you receive is in spam.
