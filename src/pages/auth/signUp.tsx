@@ -9,6 +9,7 @@ import Button from "~/components/Button";
 import { useRouter } from "next/router";
 import { api } from "~/utils/api";
 import { useToast } from "~/providers/ToastProvider";
+import HomeSkeleton from "~/components/Skeletons/HomeSkeleton";
 
 type ValidationSchema = z.infer<typeof SignUpSchema>;
 
@@ -45,7 +46,7 @@ export default function SignUp() {
     await push(`/auth/verifyEmail?email=${data.email}&message=Email Sent!`);
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <HomeSkeleton />;
 
   return (
     <div className="flex flex-col items-start gap-4">
@@ -53,7 +54,7 @@ export default function SignUp() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex w-full flex-col gap-4 p-4 pb-2"
       >
-        <h2 className="dark:text-white-soft text-2xl font-bold tracking-tight text-black md:text-2xl">
+        <h2 className="text-2xl font-bold tracking-tight text-black dark:text-white-soft md:text-2xl">
           Sign <span className="text-blue-600 dark:text-discord">Up</span>
         </h2>
         <Input
@@ -77,7 +78,7 @@ export default function SignUp() {
           error={errors.password?.message}
         />
       </form>
-      <div className="dark:bg-black-softest bg-white-soft flex w-full flex-col gap-4 rounded-b-lg p-4">
+      <div className="flex w-full flex-col gap-4 rounded-b-lg bg-white-soft p-4 dark:bg-black-softest">
         <Button type="submit" onClick={handleSubmit(onSubmit)}>
           Sign Up
         </Button>
